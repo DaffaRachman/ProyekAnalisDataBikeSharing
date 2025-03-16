@@ -8,8 +8,8 @@ st.text('Nama: Muhammad Dafa Rachman')
 st.text('Email: daffarachman6654321@gmail.com')
 st.text('ID Dicoding: MC314D5Y0997')
 
-day_df = pd.read_csv("day_cleared.csv")
-hour_df = pd.read_csv("hour_cleared.csv")
+day_df = pd.read_csv("../day_cleared.csv")
+hour_df = pd.read_csv("../hour_cleared.csv")
 
 season_labels = {1: "Semi", 2: "Panas", 3: "Gugur", 4: "Dingin"}
 day_df["season_label"] = day_df["season"].map(season_labels)
