@@ -77,7 +77,7 @@ with tab2:
     ax.grid(True)
     st.pyplot(fig)
     
-with tab 3 :
+with tab3:
 st.subheader("""
 - Peminjaman sepeda tertinggi terjadi pada musim gugur. Peminjaman lebih rendah pada musim lainnya, kemungkinan karena cuaca pada musim yang kurang mendukung. Penyedia layanan sepeda dapat meningkatkan jumlah unit sepeda untuk dipinjamkan pada musim gugur."""
             )
