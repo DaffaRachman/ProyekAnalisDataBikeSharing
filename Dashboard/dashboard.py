@@ -25,7 +25,6 @@ with tab1:
     st.subheader("Dataset hour.csv")
     st.dataframe(hour_df)
 
-    # Menampilkan insight dengan expander
     with st.expander("Insight Dataset"):
         st.markdown(
             """
@@ -77,3 +76,10 @@ with tab2:
     ax.set_xticks(range(0, 24))
     ax.grid(True)
     st.pyplot(fig)
+    
+with tab 3 :
+st.subheader("""
+- Peminjaman sepeda tertinggi terjadi pada musim gugur. Peminjaman lebih rendah pada musim lainnya, kemungkinan karena cuaca pada musim yang kurang mendukung. Penyedia layanan sepeda dapat meningkatkan jumlah unit sepeda untuk dipinjamkan pada musim gugur."""
+            )
+st.subheader("""
+- Peminjaman meningkat drastis pada jam 8 pagi dan 5 sore. Pola ini menunjukkan di mana sepeda digunakan untuk perjalanan ke dan dari tempat kerja atau sekolah. Penyedia dapat membuat promo pada jam jam sibuk tersebut untuk meningkatkan jumlah peminjaman.""")
