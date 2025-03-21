@@ -12,8 +12,8 @@ st.header("Pertanyaan Bisnis")
 st.subheader("1. Bagaimana tren peminjaman sepeda berdasarkan setiap musim?")
 st.subheader("2. Pada jam berapa peminjaman sepeda yang paling tinggi?")
 
-day_df = pd.read_csv("day_cleared.csv")
-hour_df = pd.read_csv("hour_cleared.csv")
+day_df = pd.read_csv("Dashboard/day_cleared.csv")
+hour_df = pd.read_csv("Dashboard/hour_cleared.csv")
 tab1, tab2, tab3 = st.tabs(["Dataset", "Visualisasi", "Conclusion"]) 
 
 with st.sidebar :
