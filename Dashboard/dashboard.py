@@ -27,14 +27,32 @@ with st.sidebar :
         day_df = day_df[day_df["season_label"] == selected_season]
         hour_df = hour_df[hour_df["season_label"] == selected_season]
 
+    day_df["dteday"] = pd.to_datetime(day_df["dteday"])
+    hour_df["dteday"] = pd.to_datetime(hour_df["dteday"])
+
+    start_date = day_df["dteday"].min().date()
+    end_date = day_df["dteday"].max().date()
+    
+    start_date, end_date = st.date_input(
+        label='Rentang Waktu',
+        min_value=start_date,
+        max_value=end_date,
+        value=[start_date, end_date]
+    )
+
+    day_filtered = day_df[(day_df["dteday"] >= pd.to_datetime(start_date)) & 
+                        (day_df["dteday"] <= pd.to_datetime(end_date))]
+    hour_filtered = hour_df[(hour_df["dteday"] >= pd.to_datetime(start_date)) & 
+                         (hour_df["dteday"] <= pd.to_datetime(end_date))]
+    
 with tab1:
     st.header("Dataset")
 
     st.subheader("Dataset day.csv")
-    st.dataframe(day_df)
+    st.dataframe(day_filtered)
 
     st.subheader("Dataset hour.csv")
-    st.dataframe(hour_df)
+    st.dataframe(hour_filtered)
 
     # Menampilkan insight dengan expander
     with st.expander("Insight Dataset"):
