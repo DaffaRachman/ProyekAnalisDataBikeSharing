@@ -12,9 +12,20 @@ st.header("Pertanyaan Bisnis")
 st.subheader("1. Bagaimana tren peminjaman sepeda berdasarkan setiap musim?")
 st.subheader("2. Pada jam berapa peminjaman sepeda yang paling tinggi?")
 
-day_df = pd.read_csv("Dashboard/day_cleared.csv")
-hour_df = pd.read_csv("Dashboard/hour_cleared.csv")
+day_df = pd.read_csv("day_cleared.csv")
+hour_df = pd.read_csv("hour_cleared.csv")
 tab1, tab2, tab3 = st.tabs(["Dataset", "Visualisasi", "Conclusion"]) 
+
+with st.sidebar :
+    st.header("Filter Data")
+    selected_season = st.sidebar.selectbox("Pilih Musim:", ["Semua Musim", "Semi", "Panas", "Gugur", "Dingin"])
+    label = {1: "Semi", 2: "Panas", 3: "Gugur", 4: "Dingin"}
+    day_df["season_label"] = day_df["season"].map(label)
+    hour_df["season_label"] = hour_df["season"].map(label)
+
+    if selected_season != "Semua Musim":
+        day_df = day_df[day_df["season_label"] == selected_season]
+        hour_df = hour_df[hour_df["season_label"] == selected_season]
 
 with tab1:
     st.header("Dataset")
@@ -25,6 +36,7 @@ with tab1:
     st.subheader("Dataset hour.csv")
     st.dataframe(hour_df)
 
+    # Menampilkan insight dengan expander
     with st.expander("Insight Dataset"):
         st.markdown(
                 """
@@ -76,7 +88,7 @@ with tab2:
     ax.set_xticks(range(0, 24))
     ax.grid(True)
     st.pyplot(fig)
-    
+
 with tab3:
     st.subheader("Kesimpulan")
     
